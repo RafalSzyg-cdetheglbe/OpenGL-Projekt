@@ -1,1 +1,2 @@
 C:\Users\Rafał\source\repos\Gra_Gk_OpenGL\Debug\Gra_Gk_OpenGL.exe
+C:\Users\micwa\OneDrive\Pulpit\OpenGL-Projekt\Gra_Gk_OpenGL\Debug\Gra_Gk_OpenGL.exe

@@ -1,3 +1,3 @@
 ﻿  GraClicker.cpp
-C:\Users\Rafał\source\repos\Gra_Gk_OpenGL\GraClicker.cpp(31,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  Gra_Gk_OpenGL.vcxproj -> C:\Users\Rafał\source\repos\Gra_Gk_OpenGL\Debug\Gra_Gk_OpenGL.exe
+C:\Users\micwa\OneDrive\Pulpit\OpenGL-Projekt\Gra_Gk_OpenGL\GraClicker.cpp(40,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  Gra_Gk_OpenGL.vcxproj -> C:\Users\micwa\OneDrive\Pulpit\OpenGL-Projekt\Gra_Gk_OpenGL\Debug\Gra_Gk_OpenGL.exe
