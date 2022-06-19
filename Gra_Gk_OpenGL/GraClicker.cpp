@@ -2,37 +2,33 @@
 #include<GL/glut.h>
 #include <GLFW/glfw3.h>
 
+
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
 int x, y;
-int Mousex, Mousey;
+int MouseX, MouseY;
 int color = 255;
 int l = 0;
 void rysujKwadrat(int x1, int y1, int sidelength);
 void ZamalujKwadrat(int x1, int y1, int sidelength);
 
-void mous(int button, int state, int mousex, int mousey)
-{
-	if (button == GLUT_LEFT_BUTTON && stat == GLUT_DOWN)
-	{
-		Mousex = mousex;
-		Mousey = 480 - mousey;
-	}
-}
+
 class Pamiec 
 {
 private:
 	int x=0;
 	int y=0;
-	int length=100;
+	int length=50;
 	bool czyCzerwony = false;
+
 public:
 	Pamiec(int x, int y, int length, bool czyCzerwony) {
 		this->x = x;
 		this->y = y;
 		this->length = length;
 		this->czyCzerwony = czyCzerwony;
+
 
 }
 
@@ -82,6 +78,7 @@ int main()
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(1000, 1000);
 	glutInitWindowPosition(0, 0);
+
 	glutCreateWindow("Grafika Komputerowa");
 
 	GLinit();
@@ -97,7 +94,7 @@ int main()
 	 p3.rysuj();
 
 	 p4.rysuj();
-	
+
 	glutMainLoop();
 }
 
@@ -111,14 +108,23 @@ void GLinit()
 
 void myDisplayFunc() {
 	l++;
+	POINT p;
+	if (GetCursorPos(&p)) {
+		MouseX = p.x;
+		MouseY = p.y;
+	}
 
-	std::cout << Mousex << " : " << Mousey << " " << std::endl;
-
-	if (l % 5 == 0) //ZAMIAST TEGO MA BYC SPRAWDZENIE CZY BYLO KLIKNIETE W KWADRAT TJ. X I Y  MYSZKI MIESZCZCZA SIE W PRZEDIALE KWADRATU
-	{
+	std::cout << MouseX << " " << MouseY<<'\n';
+//	if (l % 5 == 0) //ZAMIAST TEGO MA BYC SPRAWDZENIE CZY BYLO KLIKNIETE W KWADRAT TJ. X I Y  MYSZKI MIESZCZCZA SIE W PRZEDIALE KWADRATU
+//	{
+//		p1.zamaluj(); p1.s_x(rand() % 1000); p1.s_y(rand() % 1000); p1.rysuj();
+//}
+	/*x=p1.g_x();
+	y = p1.g_y();
+	if (MouseX<x || MouseX>x + 50 && MouseY<y || MouseY>y + 50) {
 		p1.zamaluj(); p1.s_x(rand() % 1000); p1.s_y(rand() % 1000); p1.rysuj();
-}
-
+	}*/
+	
 	glFlush();
 }
 
