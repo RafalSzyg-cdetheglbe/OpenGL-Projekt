@@ -10,16 +10,28 @@ int x, y;
 int MouseX, MouseY;
 int color = 255;
 int l = 0;
+int IloscPunktow = 0;
+
 void rysujKwadrat(int x1, int y1, int sidelength);
 void ZamalujKwadrat(int x1, int y1, int sidelength);
+void RysujLinie();
 
+class Linia {
+public:
+	void rysuj() {
+		glBegin(GL_LINES);
+		glVertex2f(0, 500);
+		glVertex2f(1000, 500);
+		glEnd();
+}
+};
 
 class Pamiec 
 {
 private:
 	int x=0;
 	int y=0;
-	int length=50;
+	int length=100;
 	bool czyCzerwony = false;
 
 public:
@@ -66,10 +78,11 @@ int g_y()
 void GLinit();
 void myDisplayFunc();
 
-Pamiec p1{ rand() % 1000,rand() % 1000,100,false };
-Pamiec p2{ rand() % 1000,rand() % 1000,100,true };
-Pamiec p3{ rand() % 1000,rand() % 1000,100,false };
-Pamiec p4{ rand() % 1000,rand() % 1000,100,false };
+Pamiec p1{ rand() % 1000,rand() % 399,100,false };
+Pamiec p2{ rand() % 1000,rand() % 399,100,true };
+Pamiec p3{ rand() % 1000,rand() % 399,100,false };
+Pamiec p4{ rand() % 1000,rand() % 399,100,false };
+Linia l1;
 
 int main()
 {
@@ -83,10 +96,8 @@ int main()
 
 	GLinit();
 	
-	
 	 glutDisplayFunc(myDisplayFunc);
 
-	 
 	 p1.rysuj();
 
 	 p2.rysuj();
@@ -94,6 +105,8 @@ int main()
 	 p3.rysuj();
 
 	 p4.rysuj();
+
+	 l1.rysuj();
 
 	glutMainLoop();
 }
@@ -107,6 +120,8 @@ void GLinit()
 }
 
 void myDisplayFunc() {
+
+	l1.rysuj();
 	l++;
 	POINT p;
 	if (GetCursorPos(&p)) {
@@ -114,16 +129,24 @@ void myDisplayFunc() {
 		MouseY = p.y;
 	}
 
-	std::cout << MouseX << " " << MouseY<<'\n';
-//	if (l % 5 == 0) //ZAMIAST TEGO MA BYC SPRAWDZENIE CZY BYLO KLIKNIETE W KWADRAT TJ. X I Y  MYSZKI MIESZCZCZA SIE W PRZEDIALE KWADRATU
-//	{
-//		p1.zamaluj(); p1.s_x(rand() % 1000); p1.s_y(rand() % 1000); p1.rysuj();
-//}
-	/*x=p1.g_x();
-	y = p1.g_y();
-	if (MouseX<x || MouseX>x + 50 && MouseY<y || MouseY>y + 50) {
-		p1.zamaluj(); p1.s_x(rand() % 1000); p1.s_y(rand() % 1000); p1.rysuj();
-	}*/
+
+
+	
+	if (MouseX > p1.g_x() - 100 && MouseX <p1.g_x() + 100 && MouseY > p1.g_y() - 100 && MouseY < p1.g_y() + 100) {
+		p1.zamaluj(); p1.s_x(rand() % 1000); p1.s_y(rand() % 399); p1.rysuj(); IloscPunktow++;
+	}
+
+	else if (MouseX > p2.g_x() - 100 && MouseX < p2.g_x() + 100 && MouseY > p2.g_y() - 100 && MouseY < p2.g_y() + 100) {
+		p2.zamaluj(); p2.s_x(rand() % 1000); p2.s_y(rand() % 399); p2.rysuj(); std::cout << "Ilosc zdobytych punktow:" << IloscPunktow << std::endl; exit(1);
+	}
+
+	else if (MouseX > p3.g_x() - 100 && MouseX < p3.g_x() + 100 && MouseY > p3.g_y() - 100 && MouseY < p3.g_y() + 100) {
+		p3.zamaluj(); p3.s_x(rand() % 1000); p3.s_y(rand() % 399); p3.rysuj(); IloscPunktow++;
+	}
+
+	else if (MouseX > p4.g_x() - 100 && MouseX < p4.g_x() + 100 && MouseY > p4.g_y() - 100 && MouseY < p4.g_y() + 100) {
+		p4.zamaluj(); p4.s_x(rand() % 1000); p4.s_y(rand() % 399); p4.rysuj(); IloscPunktow++;
+	}
 	
 	glFlush();
 }
@@ -155,6 +178,8 @@ void ZamalujKwadrat(int x1, int y1, int sidelength) {
 
 	glEnd();
 }
+
+
 
 
 void gra() {
